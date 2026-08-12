@@ -7,10 +7,10 @@ namespace UnmanagedResult;
 
 public readonly struct Result<TValue, TEnum> : IResult<TValue, Error<TEnum>>
     where TValue : unmanaged
-    where TEnum : unmanaged, Enum
+    where TEnum  : unmanaged, Enum
 {
-    private readonly byte _flags;
-    private readonly TValue _value;
+    private readonly byte         _flags;
+    private readonly TValue       _value;
     private readonly Error<TEnum> _error;
 
     public Result(TValue value)
