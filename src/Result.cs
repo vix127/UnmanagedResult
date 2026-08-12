@@ -12,6 +12,7 @@ public readonly struct Result<TValue, TEnum> : IResult<TValue, Error<TEnum>>
     private readonly byte         _flags;
     private readonly TValue       _value;
     private readonly Error<TEnum> _error;
+    public bool IsSuccess => _flags is 0;
 
     public Result(TValue value)
     {
@@ -25,13 +26,14 @@ public readonly struct Result<TValue, TEnum> : IResult<TValue, Error<TEnum>>
         _flags = 1;
     }
 
+
     public static bool operator true(Result<TValue, TEnum> result)
     {
-        return result._flags is 0;
+        return result.IsSuccess;
     }
 
     public static bool operator false(Result<TValue, TEnum> result)
     {
-        return result._flags is not 0;
+        return !result.IsSuccess;
     }
 }
