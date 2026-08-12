@@ -5,11 +5,33 @@ using System;
 
 namespace UnmanagedResult;
 
-public struct Result<TValue, TEnum> : IResult<TValue, Error<TEnum>>
+public readonly struct Result<TValue, TEnum> : IResult<TValue, Error<TEnum>>
     where TValue : unmanaged
-    where TEnum : unmanaged, Enum
+    where TEnum  : unmanaged, Enum
 {
-    public TValue Value => throw new System.NotImplementedException();
+    private readonly byte         _flags;
+    private readonly TValue       _value;
+    private readonly Error<TEnum> _error;
 
-    public Error<TEnum> Error => default;
+    public Result(TValue value)
+    {
+        _value = value;
+        _flags = 0;
+    }
+
+    public Result(Error<TEnum> error)
+    {
+        _error = error;
+        _flags = 1;
+    }
+
+    public static bool operator true(Result<TValue, TEnum> result)
+    {
+        return result._flags is 0;
+    }
+
+    public static bool operator false(Result<TValue, TEnum> result)
+    {
+        return result._flags is not 0;
+    }
 }
