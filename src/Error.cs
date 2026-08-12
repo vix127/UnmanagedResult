@@ -5,7 +5,7 @@ using System;
 
 namespace UnmanagedResult;
 
-public readonly struct Error<TEnum> : IError
+public readonly struct Error<TEnum> : ICodeError<TEnum>
     where TEnum : unmanaged, Enum
 {
     public TEnum Code { get; }
