@@ -9,7 +9,7 @@
 
 	<PropertyGroup>
 		<PackageId>UnmanagedResult</PackageId>
-		<Version>0.1.0-alpha</Version>
+		<Version>0.1.0</Version>
 		<Authors>Viktor Stojanović</Authors>
 		<RepositoryUrl>https://github.com/vix127/UnmanagedResult</RepositoryUrl>
 		<Copyright>Copyright © 2026 Viktor Stojanović</Copyright>
