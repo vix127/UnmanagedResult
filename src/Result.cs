@@ -26,6 +26,15 @@ public readonly struct Result<TValue, TEnum> : IResult<TValue, Error<TEnum>>
         _flags = 1;
     }
 
+    public static implicit operator Result<TValue, TEnum>(TValue value)
+    {
+        return new(value);
+    }
+
+    public static implicit operator Result<TValue, TEnum>(TEnum code)
+    {
+        return new(code);
+    }
 
     public static bool operator true(Result<TValue, TEnum> result)
     {
