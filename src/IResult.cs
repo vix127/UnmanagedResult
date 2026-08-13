@@ -7,5 +7,5 @@ public interface IResult<TValue, TError>
     where TValue : unmanaged
     where TError : unmanaged, IError
 {
-
+    public bool IsSuccess { get; }
 }
