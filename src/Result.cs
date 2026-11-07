@@ -27,6 +27,16 @@ public readonly struct Result<TValue, TEnumBackedError, TEnum> : IResult<TValue,
         _flags = 1;
     }
 
+    public static implicit operator Result<TValue, TEnumBackedError, TEnum>(TValue value)
+    {
+        return new(value);
+    }
+
+    public static implicit operator Result<TValue, TEnumBackedError, TEnum>(TEnumBackedError error)
+    {
+        return new(error);
+    }
+
     public static bool operator true(Result<TValue, TEnumBackedError, TEnum> result)
     {
         return result.IsSuccess;
