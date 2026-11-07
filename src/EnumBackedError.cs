@@ -5,22 +5,22 @@ using System;
 
 namespace UnmanagedResult;
 
-public readonly struct Error<TEnum> : ICodeError<TEnum>
+public readonly struct EnumBackedError<TEnum> : IEnumBackedError<TEnum>
     where TEnum : unmanaged, Enum
 {
     public TEnum Code { get; }
 
-    public Error(TEnum code)
+    public EnumBackedError(TEnum code)
     {
         Code = code;
     }
 
-    public static implicit operator Error<TEnum>(TEnum code)
+    public static implicit operator EnumBackedError<TEnum>(TEnum code)
     {
         return new(code);
     }
 
-    public static implicit operator TEnum(Error<TEnum> error)
+    public static implicit operator TEnum(EnumBackedError<TEnum> error)
     {
         return error.Code;
     }

@@ -5,7 +5,7 @@ using System;
 
 namespace UnmanagedResult;
 
-public interface ICodeError<TEnum> : IError
+public interface IEnumBackedError<TEnum> : IError
     where TEnum : unmanaged, Enum
 {
     public TEnum Code { get; }
