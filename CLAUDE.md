@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build
 
 - Solution: `UnmanagedResult.slnx`
-- Project: `src/UnmanagedResult.csproj` (targets `net10.0` and `netstandard2.0`, `LangVersion` 14.0)
+- Project: `src/UnmanagedResult.csproj` (targets `net11.0`, `LangVersion` 15.0)
 
 Build everything:
 
