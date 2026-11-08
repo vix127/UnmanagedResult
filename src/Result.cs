@@ -14,6 +14,8 @@ public readonly struct Result<TValue, TEnumBackedError, TEnum> : IResult<TValue,
     private readonly TValue _value;
     private readonly TEnumBackedError _error;
     public bool IsSuccess => _flags is 0;
+    public TValue Value => IsSuccess ? _value : throw new InvalidOperationException();
+    public TEnumBackedError Error => !IsSuccess ? _error : throw new InvalidOperationException();
 
     public Result(TValue value)
     {
